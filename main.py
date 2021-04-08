@@ -34,9 +34,23 @@ screen.onkey(player_b_paddle.move_up, "Up")
 screen.onkey(player_b_paddle.move_down, "Down")
 
 game_is_on = True
-while game_is_on:
-    ball.move()
-    time.sleep(0.1)
-    screen.update()
+# ball_ended = False
+
+for _ in range(5):
+    ball_ended = 0
+    while game_is_on and not ball_ended:
+        ball_ended = ball.move(player_a_paddle, player_b_paddle)
+        time.sleep(0.05)
+        screen.update()
+
+    if ball_ended == 1:
+        player_a_score.increase_score()
+        player_a_score.update_score()
+    elif ball_ended ==2:
+        player_b_score.increase_score()
+        player_b_score.update_score()
+
+    ball.serve()
+
 
 screen.exitonclick()

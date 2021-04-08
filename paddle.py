@@ -17,17 +17,18 @@ class Paddle(Turtle):
         self.color("white")
         self.penup()
         self.goto(position)
+        self.y = self.ycor()
+        self.x = self.xcor()
+
 
     def move_up(self):
-        pos_y = self.ycor() + 20
-        pos_x = self.xcor()
-        self.goto(pos_x, pos_y)
+        self.y = self.ycor() + 20
+        self.goto(self.x, self.y)
 
 
     def move_down(self):
-        pos_y = self.ycor() -20
-        pos_x = self.xcor()
-        self.goto(pos_x, pos_y)
+        self.y = self.ycor() -20
+        self.goto(self.x, self.y)
 
 
 
